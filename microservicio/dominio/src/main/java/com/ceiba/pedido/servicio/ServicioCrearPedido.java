@@ -45,7 +45,7 @@ public class ServicioCrearPedido {
 	}
 	
 	
-	private double calcularPrecioPedido(List<SolicitudPedidoProducto> pedidoInicialProducto, Long idMunicipio) {
+	public double calcularPrecioPedido(List<SolicitudPedidoProducto> pedidoInicialProducto, Long idMunicipio) {
 		List<String> identificadoresProductos = pedidoInicialProducto.stream()
 				.map(SolicitudPedidoProducto::getCodigoProducto).collect(Collectors.toList());
 		Double precioPedido = repositorioProducto.obtenerPrecioTotalProductos(identificadoresProductos);
