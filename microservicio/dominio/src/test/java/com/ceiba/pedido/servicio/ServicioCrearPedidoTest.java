@@ -21,7 +21,7 @@ public class ServicioCrearPedidoTest {
         RepositorioProducto repositorioProducto=Mockito.mock(RepositorioProducto.class);
         RepositorioTarifa repositorioTarifa=Mockito.mock(RepositorioTarifa.class);
           
-        Mockito.when(repositorioProducto.obtenerPrecioTotalProductos(Mockito.anyList())).thenReturn((double) 142000);
+        Mockito.when(repositorioProducto.obtenerPrecioTotalProductos(Mockito.anyListOf(String.class))).thenReturn((double) 142000);
         Mockito.when(repositorioTarifa.obtenerTarifaPorMunicipio(Mockito.anyLong())).thenReturn((double) 2000);
        
         ServicioCrearPedido servicioCrearPedido=new ServicioCrearPedido(repositorioPedido, repositorioProducto, repositorioTarifa);
