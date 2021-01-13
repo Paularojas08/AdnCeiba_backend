@@ -11,7 +11,7 @@ public class RepositorioPedidoMysql implements RepositorioPedido {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace="usuario", value="crear")
+    @SqlStatement(namespace="pedido", value="crear")
     private static String sqlCrear;
 
 

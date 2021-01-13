@@ -1,1 +1,1 @@
-INSERT INTO pedidos(identificadorseguimiento, fechapedido, fechaenvio, preciototal, estado) VALUES (:identificadorSeguimiento, :fechaPedido, :fechaEnvio, :precioTotal, :estado)";
+INSERT INTO pedidos(identificadorseguimiento, fechapedido, fechaenvio, preciototal, estado) VALUES (:identificadorSeguimiento, :fechaPedido, :fechaEnvio, :precioTotal, :estado);

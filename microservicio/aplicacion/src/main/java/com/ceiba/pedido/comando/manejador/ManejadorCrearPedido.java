@@ -23,7 +23,8 @@ public class ManejadorCrearPedido implements ManejadorComandoRespuesta<ComandoSo
    
 
 	@Override
-	public ComandoRespuesta<Long> ejecutar(ComandoSolcitudPedido solicitudPedido) {
-		return new ComandoRespuesta<>(this.servicioCrearPedido.ejecutar(new SolicitudPedido()));		
+	public ComandoRespuesta<Long> ejecutar(ComandoSolcitudPedido comandoSolicitudPedido) {
+        SolicitudPedido solicitudPedido = fabricaPedido.crear(comandoSolicitudPedido);
+		return new ComandoRespuesta<>(this.servicioCrearPedido.ejecutar(solicitudPedido));
 	}
 }
