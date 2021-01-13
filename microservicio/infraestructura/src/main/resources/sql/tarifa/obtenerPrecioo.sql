@@ -1,0 +1,1 @@
+SELECT t.precio FROM tarifas t WHERE t.idmunicipio = :idMunicipio

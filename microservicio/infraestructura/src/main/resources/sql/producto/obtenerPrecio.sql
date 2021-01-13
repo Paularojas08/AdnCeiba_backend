@@ -1,0 +1,1 @@
+SELECT SUM(p.precio) FROM productos p WHERE p.codigo IN (:test)

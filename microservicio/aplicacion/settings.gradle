@@ -1,0 +1,4 @@
+include 'aplicacion'
+include 'dominio'
+include 'infraestructura'
+include 'test'
