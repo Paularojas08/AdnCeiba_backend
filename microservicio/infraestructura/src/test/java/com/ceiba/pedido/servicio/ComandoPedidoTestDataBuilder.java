@@ -1,9 +1,6 @@
 package com.ceiba.pedido.servicio;
 
-import com.ceiba.pedido.comando.ComandoPedido;
 import com.ceiba.pedido.comando.ComandoSolcitudPedido;
-import com.ceiba.pedido.controlador.ComandoControladorPedidoTest;
-import com.ceiba.pedido.modelo.entidad.SolicitudPedido;
 import com.ceiba.producto.modelo.entidad.SolicitudPedidoProducto;
 
 import java.util.Arrays;
