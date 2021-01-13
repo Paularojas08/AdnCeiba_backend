@@ -31,7 +31,7 @@ public class ComandoControladorPedidoTest {
     @Test
     public void crear() throws Exception{
         // arrange
-        ComandoSolcitudPedido solicituPedido=new ComandoPedidoTestDataBuilder().build();
+        ComandoSolcitudPedido solicituPedido = new ComandoPedidoTestDataBuilder().build();
         // act - assert
         mocMvc.perform(post("/pedido")
                 .contentType(MediaType.APPLICATION_JSON)

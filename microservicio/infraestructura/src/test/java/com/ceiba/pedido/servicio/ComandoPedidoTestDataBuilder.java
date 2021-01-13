@@ -10,7 +10,7 @@ public class ComandoPedidoTestDataBuilder {
     private static final String CEDULA = "1094956843";
     private static final String NOMBRE_COMPLETO = "Juanito Perez";
     private static final String DIRECCION = "Carrera 12 #13-12";
-    private static final Long ID_MUNICIPIO = 8l;
+    private static final Long ID_MUNICIPIO = 8L;
     private static final String CODIGO_PRODUCTO_1 = "354";
     private static final int CANTIDAD_1 = 2;
     private static final String CODIGO_PRODUCTO_2 = "56";
