@@ -1,4 +1,4 @@
-package com.ceiba.pedido.controlador;
+package com.ceiba.pedido;
 
 import com.ceiba.ComandoRespuesta;
 import com.ceiba.pedido.comando.ComandoPedido;

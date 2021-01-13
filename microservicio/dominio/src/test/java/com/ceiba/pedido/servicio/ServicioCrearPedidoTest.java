@@ -17,18 +17,16 @@ public class ServicioCrearPedidoTest {
     public void validarPrecioTest() {
         // arrange
         SolicitudPedido solicitud = new PedidoTestDataBuilder().build();
-        
-        
         RepositorioPedido repositorioPedido=Mockito.mock(RepositorioPedido.class);
         RepositorioProducto repositorioProducto=Mockito.mock(RepositorioProducto.class);
         RepositorioTarifa repositorioTarifa=Mockito.mock(RepositorioTarifa.class);
           
-        Mockito.when(repositorioProducto.obtenerPrecioTotalProductos(Mockito.mock(null))).thenReturn((double) 142000);
+        Mockito.when(repositorioProducto.obtenerPrecioTotalProductos(Mockito.anyList())).thenReturn((double) 142000);
         Mockito.when(repositorioTarifa.obtenerTarifaPorMunicipio(Mockito.anyLong())).thenReturn((double) 2000);
        
         ServicioCrearPedido servicioCrearPedido=new ServicioCrearPedido(repositorioPedido, repositorioProducto, repositorioTarifa);
-        
+        double valorPedido=servicioCrearPedido.calcularPrecioPedido(solicitud.getSolicitudPedidoProductos(), 1L);
         // act - assert
-        Assert.assertEquals(servicioCrearPedido.calcularPrecioPedido(solicitud.getSolicitudPedidoProductos(), 1L), (double) 144000);
+        Assert.assertEquals(valorPedido, 144000,0);
     }
 }

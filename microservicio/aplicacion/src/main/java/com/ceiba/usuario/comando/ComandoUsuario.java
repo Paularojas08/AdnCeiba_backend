@@ -14,9 +14,7 @@ public class ComandoUsuario {
 	private String clave;
 	private LocalDateTime fecha;
 
-	public ComandoUsuario(Long id2, String nombre2, String clave2, LocalDateTime fecha2) {
-		// TODO Auto-generated constructor stub
-	}
+
 
 	public Long getId() {
 		return id;
