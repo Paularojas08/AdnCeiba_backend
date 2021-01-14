@@ -1,5 +1,6 @@
 package com.ceiba.configuracion;
 
+import com.ceiba.pedido.puerto.repositorio.RepositorioDetallePedido;
 import com.ceiba.pedido.puerto.repositorio.RepositorioPedido;
 import com.ceiba.pedido.servicio.ServicioCrearPedido;
 import com.ceiba.producto.puerto.repositorio.RepositorioProducto;
@@ -31,7 +32,7 @@ public class BeanServicio {
 	
     @Bean
     public ServicioCrearPedido servicioCrearPedido(RepositorioPedido repositorioPedido, RepositorioProducto repositorioProducto,
-			RepositorioTarifa repositorioTarifa) {
-        return new ServicioCrearPedido(repositorioPedido,repositorioProducto,repositorioTarifa);
+                                                   RepositorioTarifa repositorioTarifa, RepositorioDetallePedido repositorioDetallePedido) {
+        return new ServicioCrearPedido(repositorioPedido,repositorioProducto,repositorioTarifa, repositorioDetallePedido);
     }
 }

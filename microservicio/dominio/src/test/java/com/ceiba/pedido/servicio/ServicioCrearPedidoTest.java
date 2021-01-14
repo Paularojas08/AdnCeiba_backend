@@ -1,6 +1,7 @@
 package com.ceiba.pedido.servicio;
 
 
+import com.ceiba.pedido.puerto.repositorio.RepositorioDetallePedido;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -20,11 +21,12 @@ public class ServicioCrearPedidoTest {
         RepositorioPedido repositorioPedido=Mockito.mock(RepositorioPedido.class);
         RepositorioProducto repositorioProducto=Mockito.mock(RepositorioProducto.class);
         RepositorioTarifa repositorioTarifa=Mockito.mock(RepositorioTarifa.class);
+        RepositorioDetallePedido repositorioDetallePedido=Mockito.mock(RepositorioDetallePedido.class);
           
         Mockito.when(repositorioProducto.obtenerPrecioTotalProductos(Mockito.anyListOf(String.class))).thenReturn((double) 142000);
         Mockito.when(repositorioTarifa.obtenerTarifaPorMunicipio(Mockito.anyLong())).thenReturn((double) 2000);
        
-        ServicioCrearPedido servicioCrearPedido=new ServicioCrearPedido(repositorioPedido, repositorioProducto, repositorioTarifa);
+        ServicioCrearPedido servicioCrearPedido=new ServicioCrearPedido(repositorioPedido, repositorioProducto, repositorioTarifa,repositorioDetallePedido);
         double valorPedido=servicioCrearPedido.calcularPrecioPedido(solicitud.getSolicitudPedidoProductos(), 1L);
         // act - assert
         Assert.assertEquals(valorPedido, 144000,0);

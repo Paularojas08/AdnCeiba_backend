@@ -8,86 +8,74 @@ create table usuario (
 
 
 CREATE TABLE clientes(
-	id serial PRIMARY KEY,
+	id bigint NOT NULL AUTO_INCREMENT,
 	idMunicipio BIGINT  NOT null,
 	cedula VARCHAR ( 50 ) UNIQUE NOT NULL,
 	nombre VARCHAR ( 255 )  NOT NULL,
 	telefono VARCHAR ( 50 )  NOT NULL,
-	direccion VARCHAR ( 255 )  NOT NULL
+	direccion VARCHAR ( 255 )  NOT NULL,
+	primary key (id)
 );
 
 
 CREATE TABLE vendedores (
-	id serial PRIMARY KEY,
+	id bigint NOT NULL AUTO_INCREMENT,
 	cedula VARCHAR ( 50 ) UNIQUE NOT NULL,
 	nombre VARCHAR ( 255 )  NOT NULL,
 	password VARCHAR ( 50 ) NOT NULL,
-	email VARCHAR ( 255 ) UNIQUE NOT NULL
+	email VARCHAR ( 255 ) UNIQUE NOT NULL,
+	primary key (id)
 );
 
 
 CREATE TABLE detallePedidos (
-	id serial PRIMARY key,
+	id bigint NOT NULL AUTO_INCREMENT,
 	cantidadPedida BIGINT  NOT null,
 	id_vendedor BIGINT ,
-	id_cliente BIGINT  NOT null,
+	id_cliente BIGINT  ,
 	id_producto  VARCHAR ( 50 )  NOT NULL,
-	id_pedido BIGINT  NOT null
+	id_pedido BIGINT  NOT null,
+	primary key (id)
 
 );
 
 CREATE TABLE pedidos (
-	id serial PRIMARY KEY,
+	id bigint NOT NULL AUTO_INCREMENT,
 	identificadorSeguimiento  VARCHAR ( 50 ) UNIQUE NOT NULL,
 	fechaPedido VARCHAR ( 50 )  NOT NULL,
 	fechaEnvio VARCHAR ( 50 ),
 	precioTotal FLOAT  NOT null,
-	estado  VARCHAR ( 50 ) NOT NULL
+	estado  VARCHAR ( 50 ) NOT NULL,
+	primary key (id)
 
 );
 
 CREATE TABLE productos (
-	id serial PRIMARY KEY,
+	id bigint NOT NULL AUTO_INCREMENT,
 	codigo  VARCHAR ( 50 ) UNIQUE NOT null,
 	nombre VARCHAR ( 50 )  NOT NULL,
-	precio FLOAT  NOT NULL
+	precio FLOAT  NOT NULL,
+	primary key (id)
 );
 
-alter table detallePedidos
-   add constraint FK_vendedores_idVendedor
-   foreign key (id_vendedor)
-   references vendedores(id);
+  Alter table detallePedidos ADD FOREIGN KEY (id_producto) REFERENCES productos(codigo);
+  Alter table detallePedidos ADD FOREIGN KEY (id_pedido) REFERENCES pedidos(id);
 
-  alter table detallePedidos
-   add constraint FK_clientes_idCliente
-   foreign key (id_cliente)
-   references clientes(id);
-
-
-  alter table detallePedidos
-   add constraint FK_productos_idProducto
-   foreign key (id_producto)
-   references productos(codigo);
-
-  alter table detallePedidos
-   add constraint FK_pedidos_idPedido
-   foreign key (id_pedido)
-   references pedidos(id);
 
   CREATE TABLE municipios (
-	id serial PRIMARY KEY,
+	id bigint NOT NULL AUTO_INCREMENT,
 	nombre VARCHAR ( 50 )  NOT NULL,
-	codigoMunicipio BIGINT  NOT NULL
+	codigoMunicipio BIGINT  NOT NULL,
+	primary key (id)
 );
   CREATE TABLE tarifas (
-	id serial PRIMARY KEY,
+	id bigint NOT NULL AUTO_INCREMENT,
 	idMunicipio BIGINT REFERENCES municipios(id),
 	precio FLOAT  NOT null,
+	primary key (id),
 	UNIQUE(idMunicipio)
 );
 
 
-alter table clientes
-   add constraint FK_municipios_idMunicipio
-   foreign key (idMunicipio)
-   references municipios(id);
+
+

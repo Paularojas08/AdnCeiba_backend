@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.ceiba.pedido.modelo.entidad.DetallePedido;
 import com.ceiba.pedido.modelo.entidad.Pedido;
 import com.ceiba.pedido.modelo.entidad.SolicitudPedido;
+import com.ceiba.pedido.puerto.repositorio.RepositorioDetallePedido;
 import com.ceiba.pedido.puerto.repositorio.RepositorioPedido;
 import com.ceiba.pedido.servicio.util.EstadoPedido;
 import com.ceiba.pedido.servicio.util.UUIDUtil;
@@ -22,16 +24,16 @@ public class ServicioCrearPedido {
 	private final RepositorioPedido repositorioPedido;
 	private final RepositorioProducto repositorioProducto;
 	private final RepositorioTarifa repositorioTarifa;
+	private final RepositorioDetallePedido repositorioDetallePedido;
 
 	private ArrayList<ReglasDeNegocio> reglasDeNegocios;
 
-	private final PedidoBuilder pedidoBuilder = new PedidoBuilder();
-
 	public ServicioCrearPedido(RepositorioPedido repositorioPedido, RepositorioProducto repositorioProducto,
-			RepositorioTarifa repositorioTarifa) {
+			RepositorioTarifa repositorioTarifa,RepositorioDetallePedido repositorioDetallePedido) {
 		this.repositorioPedido = repositorioPedido;
 		this.repositorioProducto = repositorioProducto;
 		this.repositorioTarifa = repositorioTarifa;
+		this.repositorioDetallePedido=repositorioDetallePedido;
 		reglasDeNegocios = new ArrayList<>();
 	}
 
@@ -41,9 +43,21 @@ public class ServicioCrearPedido {
 				solicitudPedido.getIdMunicipio());
 		Pedido pedido = contruirPedidoInicial(precioPedido);
 		validar(pedido);
-		return repositorioPedido.crear(pedido);
+		Long pedidoId= repositorioPedido.crear(pedido);
+		crearDetallePedido(pedidoId,solicitudPedido);
+		return pedidoId;
+
 	}
-	
+	private void crearDetallePedido(Long pedidoId,SolicitudPedido solicitudPedido){
+		List<DetallePedido> detallePedidos = construirDetallesPedido(pedidoId, solicitudPedido.getSolicitudPedidoProductos());
+		repositorioDetallePedido.crearDetallesPedido(detallePedidos);
+
+	}
+	private List<DetallePedido> construirDetallesPedido(Long pedidoId, List<SolicitudPedidoProducto> solicitudPedidoProductos) {
+		return solicitudPedidoProductos.stream().map(solicitudProducto -> {
+			return new DetallePedido(null,pedidoId,solicitudProducto.getCodigoProducto(),null,solicitudProducto.getCantidad());
+		}).collect(Collectors.toList());
+	}
 	
 	public double calcularPrecioPedido(List<SolicitudPedidoProducto> pedidoInicialProducto, Long idMunicipio) {
 		List<String> identificadoresProductos = pedidoInicialProducto.stream()
@@ -55,8 +69,7 @@ public class ServicioCrearPedido {
 
 
 	private Pedido contruirPedidoInicial(Double precioPedido) {
-		return pedidoBuilder.build().conEstado(EstadoPedido.CREADO).conFechaPedido(LocalDate.now())
-				.conPrecioTotal(precioPedido).conIdDeSeguimiento(UUIDUtil.generarUUID()).toPedido();	
+		return new Pedido(null,UUIDUtil.generarUUID(),LocalDate.now(),null,precioPedido,null,EstadoPedido.CREADO);
 	}
 	
 	private void validar(Pedido pedido) {
