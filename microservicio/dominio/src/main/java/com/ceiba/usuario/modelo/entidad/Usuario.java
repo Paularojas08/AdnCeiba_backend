@@ -1,7 +1,9 @@
 package com.ceiba.usuario.modelo.entidad;
 
 
+import com.ceiba.util.Constantes;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
@@ -9,64 +11,22 @@ import static com.ceiba.dominio.ValidadorArgumento.validarLongitud;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
 @Getter
+@Setter
 public class Usuario {
 
-    private static final String SE_DEBE_INGRESAR_LA_FECHA_CREACION = "Se debe ingresar la fecha de creación";
-    private static final String LA_CLAVE_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A = "La clave debe tener una longitud mayor o igual a %s";
-    private static final String SE_DEBE_INGRESAR_LA_CLAVE = "Se debe ingresar la clave";
-    private static final String SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO = "Se debe ingresar el nombre de usuario";
-
-    private static final int LONGITUD_MINIMA_CLAVE = 4;
-
     private Long id;
+    private String cedula;
     private String nombre;
     private String clave;
-    private LocalDateTime fechaCreacion;
+    private String correo;
 
-    public Usuario(Long id,String nombre, String clave,LocalDateTime fechaCreacion) {
-        validarObligatorio(nombre, SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO);
-        validarObligatorio(clave, SE_DEBE_INGRESAR_LA_CLAVE);
-        validarLongitud(clave, LONGITUD_MINIMA_CLAVE, String.format(LA_CLAVE_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A,LONGITUD_MINIMA_CLAVE));
-        validarObligatorio(fechaCreacion, SE_DEBE_INGRESAR_LA_FECHA_CREACION);
-
+    public Usuario(Long id,String cedula,String nombre, String clave,String correo) {
+        validarObligatorio(nombre, Constantes.SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO);
+        validarObligatorio(clave, Constantes.SE_DEBE_INGRESAR_LA_CLAVE);
+        validarObligatorio(cedula,Constantes.VALIDACION_CAMPO_CEDULA);
         this.id = id;
         this.nombre = nombre;
         this.clave = clave;
-        this.fechaCreacion = fechaCreacion;
     }
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getClave() {
-		return clave;
-	}
-
-	public void setClave(String clave) {
-		this.clave = clave;
-	}
-
-	public LocalDateTime getFechaCreacion() {
-		return fechaCreacion;
-	}
-
-	public void setFechaCreacion(LocalDateTime fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
-	}
-
-	
 
 }

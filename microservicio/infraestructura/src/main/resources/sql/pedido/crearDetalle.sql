@@ -1,1 +1,1 @@
-INSERT INTO detallepedidos (cantidadpedida,id_producto, id_pedido) VALUES(:cantidadPedida, :productoId, :pedidoId);
+INSERT INTO detallepedidos (cantidadpedida,id_producto, id_pedido) VALUES(:cantidadPedida, :idProducto, :idPedido);

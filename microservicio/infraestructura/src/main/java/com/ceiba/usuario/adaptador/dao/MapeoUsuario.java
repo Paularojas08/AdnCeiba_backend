@@ -14,11 +14,12 @@ public class MapeoUsuario implements RowMapper<DtoUsuario>, MapperResult {
     public DtoUsuario mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
         Long id = resultSet.getLong("id");
+        String cedula = resultSet.getString("cedula");
         String nombre = resultSet.getString("nombre");
         String clave = resultSet.getString("clave");
-        LocalDateTime fecha = extraerLocalDateTime(resultSet, "fecha_creacion");
+        String correo = resultSet.getString("correo");
 
-        return new DtoUsuario();
+        return new DtoUsuario(id,cedula,nombre,clave,correo);
     }
 
 }

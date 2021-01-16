@@ -10,7 +10,7 @@ import com.ceiba.usuario.comando.ComandoUsuario;
 import com.ceiba.usuario.comando.fabrica.FabricaUsuario;
 
 @Component
-public class ManejadorCrearUsuario implements ManejadorComandoRespuesta<ComandoUsuario, ComandoRespuesta<Long>> {
+public class ManejadorCrearUsuario implements ManejadorComandoRespuesta<ComandoUsuario,ComandoRespuesta<Long>> {
 
     private final FabricaUsuario fabricaUsuario;
     private final ServicioCrearUsuario servicioCrearUsuario;

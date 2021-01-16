@@ -26,7 +26,6 @@ public class ComandoUsuarioTestDataBuilder {
     public ComandoUsuario build() {
         ComandoUsuario comandoUsuario=new ComandoUsuario();
         comandoUsuario.setClave(this.clave);
-        comandoUsuario.setFecha(this.fecha);
         comandoUsuario.setNombre(this.nombre);
         return comandoUsuario;
     }

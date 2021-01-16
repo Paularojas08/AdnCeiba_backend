@@ -28,8 +28,4 @@ public class RepositorioDetallePedidoMysql implements RepositorioDetallePedido {
         }
     }
 
-    @Override
-    public Pedido obtenerPedido(String idPedido) {
-        return null;
-    }
 }

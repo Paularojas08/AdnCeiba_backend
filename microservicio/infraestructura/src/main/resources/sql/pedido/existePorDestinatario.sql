@@ -1,0 +1,1 @@
+select count(1) from pedidos where cedula_destinatario = :cedula and estado='PENDIENTE'

@@ -11,9 +11,10 @@ public class FabricaUsuario {
     public Usuario crear(ComandoUsuario comandoUsuario) {
         return new Usuario(
                 comandoUsuario.getId(),
+                comandoUsuario.getCedula(),
                 comandoUsuario.getNombre(),
                 comandoUsuario.getClave(),
-                comandoUsuario.getFecha()
+                comandoUsuario.getCorreo()
         );
     }
 

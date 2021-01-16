@@ -7,14 +7,16 @@ import java.time.LocalDateTime;
 public class UsuarioTestDataBuilder {
 
     private Long id;
-    private String nombreUsuario;
+    private String cedula;
+    private String nombre;
     private String clave;
-    private LocalDateTime fecha;
+    private String correo;
 
     public UsuarioTestDataBuilder() {
-        nombreUsuario = "1234";
+        cedula="1097857234";
+        nombre = "admin";
         clave = "1234";
-        fecha = LocalDateTime.now();
+        correo="admin@gmail.com";
     }
 
     public UsuarioTestDataBuilder conClave(String clave) {
@@ -28,6 +30,6 @@ public class UsuarioTestDataBuilder {
     }
 
     public Usuario build() {
-        return new Usuario(id,nombreUsuario, clave,fecha);
+        return new Usuario(id,cedula,nombre, clave,correo);
     }
 }

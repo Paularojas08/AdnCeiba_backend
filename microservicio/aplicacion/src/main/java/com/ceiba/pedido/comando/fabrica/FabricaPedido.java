@@ -1,17 +1,18 @@
 package com.ceiba.pedido.comando.fabrica;
 
+import com.ceiba.pedido.comando.ComandoPedido;
 import com.ceiba.pedido.comando.ComandoSolcitudPedido;
+import com.ceiba.pedido.modelo.entidad.Pedido;
 import com.ceiba.pedido.modelo.entidad.SolicitudPedido;
 import org.springframework.stereotype.Component;
-
-import com.ceiba.pedido.comando.ComandoPedido;
-import com.ceiba.pedido.modelo.entidad.Pedido;
 
 @Component
 public class FabricaPedido {
 
-    public SolicitudPedido crear(ComandoSolcitudPedido comandoPedido) {
-        return new SolicitudPedido(null, comandoPedido.getIdMunicipio(), comandoPedido.getCedula(), comandoPedido.getNombreCompleto(), comandoPedido.getDireccion(), comandoPedido.getSolicitudPedidoProductos());
+    public Pedido crear(ComandoPedido comandoPedido) {
+        return new Pedido(comandoPedido.getId(), comandoPedido.getIdentificadorSeguimiento(),
+                comandoPedido.getFechaPedido(),comandoPedido.getFechaEnvio(), comandoPedido.getPrecioTotal(),
+                comandoPedido.getDetallePedido(), comandoPedido.getEstado(), comandoPedido.getIdMunicipio(), comandoPedido.getCedula(), comandoPedido.getDireccion(), comandoPedido.getIdUsuario());
 
     }
 

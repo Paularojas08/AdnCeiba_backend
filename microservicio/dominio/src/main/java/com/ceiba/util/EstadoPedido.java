@@ -1,4 +1,4 @@
-package com.ceiba.pedido.servicio.util;
+package com.ceiba.util;
 
 public enum EstadoPedido {
 	CREADO, PENDIENTE, PROCESANDO, ENVIADO, ENTREGADO

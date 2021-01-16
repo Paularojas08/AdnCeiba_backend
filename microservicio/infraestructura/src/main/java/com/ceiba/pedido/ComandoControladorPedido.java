@@ -3,11 +3,9 @@ package com.ceiba.pedido;
 import com.ceiba.ComandoRespuesta;
 import com.ceiba.pedido.comando.ComandoPedido;
 import com.ceiba.pedido.comando.ComandoSolcitudPedido;
+import com.ceiba.pedido.comando.manejador.ManejadorActualizarPedido;
 import com.ceiba.pedido.comando.manejador.ManejadorCrearPedido;
-import com.ceiba.usuario.comando.ComandoUsuario;
-import com.ceiba.usuario.comando.manejador.ManejadorActualizarUsuario;
-import com.ceiba.usuario.comando.manejador.ManejadorCrearUsuario;
-import com.ceiba.usuario.comando.manejador.ManejadorEliminarUsuario;
+import com.ceiba.pedido.comando.manejador.ManejadorEliminarPedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,10 +18,14 @@ import io.swagger.annotations.ApiOperation;
 public class ComandoControladorPedido {
 
     private final ManejadorCrearPedido manejadorCreaPedido;
+    private final ManejadorActualizarPedido manejadorActualizarPedido;
+    private final ManejadorEliminarPedido manejadorEliminarPedido;
 
     @Autowired
-    public ComandoControladorPedido(ManejadorCrearPedido manejadorCreaPedido) {
+    public ComandoControladorPedido(ManejadorCrearPedido manejadorCreaPedido, ManejadorActualizarPedido manejadorActualizarPedido, ManejadorEliminarPedido manejadorEliminarPedido) {
         this.manejadorCreaPedido = manejadorCreaPedido;
+        this.manejadorActualizarPedido = manejadorActualizarPedido;
+        this.manejadorEliminarPedido = manejadorEliminarPedido;
     }
 
     @PostMapping
@@ -31,4 +33,19 @@ public class ComandoControladorPedido {
     public ComandoRespuesta<Long> crear(@RequestBody ComandoSolcitudPedido comandoPedido) {
         return manejadorCreaPedido.ejecutar(comandoPedido);
     }
+
+
+    @PutMapping(value = "/{id}")
+    @ApiOperation("Actualizar pedido")
+    public void actualizarPedido(@PathVariable Long id, @RequestBody ComandoPedido comandoPedido) {
+        comandoPedido.setId(id);
+        this.manejadorActualizarPedido.ejecutar(comandoPedido);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    @ApiOperation("Eliminar pedido")
+    public void eliminarPedido(@PathVariable Long id) {
+        this.manejadorEliminarPedido.ejecutar(id);
+    }
+
 }
