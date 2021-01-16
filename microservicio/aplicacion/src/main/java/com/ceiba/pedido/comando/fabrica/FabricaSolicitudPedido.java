@@ -4,9 +4,6 @@ import com.ceiba.pedido.comando.ComandoSolcitudPedido;
 import com.ceiba.pedido.modelo.entidad.SolicitudPedido;
 import org.springframework.stereotype.Component;
 
-import com.ceiba.pedido.comando.ComandoPedido;
-import com.ceiba.pedido.modelo.entidad.Pedido;
-
 @Component
 public class FabricaSolicitudPedido {
 

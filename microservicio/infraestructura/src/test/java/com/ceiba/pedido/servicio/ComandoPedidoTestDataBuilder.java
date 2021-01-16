@@ -1,14 +1,9 @@
 package com.ceiba.pedido.servicio;
 
 import com.ceiba.pedido.comando.ComandoPedido;
-import com.ceiba.pedido.comando.ComandoSolcitudPedido;
-import com.ceiba.pedido.modelo.entidad.Pedido;
-import com.ceiba.producto.modelo.entidad.SolicitudPedidoProducto;
 import com.ceiba.util.EstadoPedido;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
 
 public class ComandoPedidoTestDataBuilder {
 

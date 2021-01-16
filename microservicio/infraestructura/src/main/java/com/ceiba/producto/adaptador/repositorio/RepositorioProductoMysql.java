@@ -22,13 +22,6 @@ public class RepositorioProductoMysql implements RepositorioProducto {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
-
-	@Override
-	public Producto obtener(String codigo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	public Double obtenerPrecioTotalProductos(List<String> identificadoresProductos) {
 		return this.customNamedParameterJdbcTemplate.obtenerDoubleValue("test", identificadoresProductos, sqlObtenerPrecio);

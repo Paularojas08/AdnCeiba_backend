@@ -1,9 +1,7 @@
 package com.ceiba.pedido.comando.fabrica;
 
 import com.ceiba.pedido.comando.ComandoPedido;
-import com.ceiba.pedido.comando.ComandoSolcitudPedido;
 import com.ceiba.pedido.modelo.entidad.Pedido;
-import com.ceiba.pedido.modelo.entidad.SolicitudPedido;
 import org.springframework.stereotype.Component;
 
 @Component

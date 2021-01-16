@@ -6,6 +6,9 @@ import com.ceiba.pedido.comando.ComandoSolcitudPedido;
 import com.ceiba.pedido.comando.manejador.ManejadorActualizarPedido;
 import com.ceiba.pedido.comando.manejador.ManejadorCrearPedido;
 import com.ceiba.pedido.comando.manejador.ManejadorEliminarPedido;
+import com.ceiba.pedido.comando.manejador.ManejadorSeguimientoPedido;
+import com.ceiba.pedido.modelo.dto.DtoPedido;
+import com.ceiba.pedido.modelo.entidad.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,12 +23,14 @@ public class ComandoControladorPedido {
     private final ManejadorCrearPedido manejadorCreaPedido;
     private final ManejadorActualizarPedido manejadorActualizarPedido;
     private final ManejadorEliminarPedido manejadorEliminarPedido;
+    private final ManejadorSeguimientoPedido manejadorSeguimientoPedido;
 
     @Autowired
-    public ComandoControladorPedido(ManejadorCrearPedido manejadorCreaPedido, ManejadorActualizarPedido manejadorActualizarPedido, ManejadorEliminarPedido manejadorEliminarPedido) {
+    public ComandoControladorPedido(ManejadorCrearPedido manejadorCreaPedido, ManejadorActualizarPedido manejadorActualizarPedido, ManejadorEliminarPedido manejadorEliminarPedido, ManejadorSeguimientoPedido manejadorSeguimientoPedido) {
         this.manejadorCreaPedido = manejadorCreaPedido;
         this.manejadorActualizarPedido = manejadorActualizarPedido;
         this.manejadorEliminarPedido = manejadorEliminarPedido;
+        this.manejadorSeguimientoPedido = manejadorSeguimientoPedido;
     }
 
     @PostMapping
@@ -48,4 +53,9 @@ public class ComandoControladorPedido {
         this.manejadorEliminarPedido.ejecutar(id);
     }
 
+    @GetMapping(value = "/{identificador}")
+    @ApiOperation("Obtener Producto Por identificador seguimiento")
+    public Pedido buscarPedidoPorIdentificador(@PathVariable String identificador) {
+        return this.manejadorSeguimientoPedido.ejecutar(identificador);
+    }
 }

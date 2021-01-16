@@ -5,6 +5,7 @@ import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.pedido.modelo.dto.DtoDetallePedido;
 import com.ceiba.pedido.puerto.dao.DaoDetallePedido;
 import com.ceiba.usuario.adaptador.dao.MapeoUsuario;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -24,6 +25,8 @@ public class DaoDetallePedidoMysql implements DaoDetallePedido {
 
     @Override
     public List<DtoDetallePedido> listar(Long idPedido) {
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoDetallePedido());
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("idPedido", idPedido);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar,paramSource, new MapeoDetallePedido());
     }
 }

@@ -1,13 +1,17 @@
 package com.ceiba.configuracion;
 
 import com.ceiba.pedido.puerto.api.ApiClienteEsFestivo;
+import com.ceiba.pedido.puerto.dao.DaoDetallePedido;
 import com.ceiba.pedido.puerto.dao.DaoPedido;
 import com.ceiba.pedido.puerto.repositorio.RepositorioDetallePedido;
 import com.ceiba.pedido.puerto.repositorio.RepositorioPedido;
 import com.ceiba.pedido.servicio.ServicioActualizarPedido;
 import com.ceiba.pedido.servicio.ServicioCrearPedido;
 import com.ceiba.pedido.servicio.ServicioEliminarPedido;
+import com.ceiba.pedido.servicio.ServicioSeguimientoPedido;
+import com.ceiba.producto.puerto.dao.DaoProducto;
 import com.ceiba.producto.puerto.repositorio.RepositorioProducto;
+import com.ceiba.producto.servicio.ServicioObtenerProducto;
 import com.ceiba.tarifa.puerto.dao.RepositorioTarifa;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.usuario.servicio.ServicioActualizarUsuario;
@@ -47,4 +51,15 @@ public class BeanServicio {
                                                    RepositorioTarifa repositorioTarifa, RepositorioDetallePedido repositorioDetallePedido, ApiClienteEsFestivo apiClienteEsFestivo, DaoPedido daoPedido) {
         return new ServicioCrearPedido(repositorioPedido,repositorioProducto,repositorioTarifa, repositorioDetallePedido,apiClienteEsFestivo,daoPedido);
     }
+
+    @Bean
+    public ServicioObtenerProducto servicioObtenerProducto(DaoProducto daoProducto) {
+        return new ServicioObtenerProducto(daoProducto);
+    }
+
+    @Bean
+    public ServicioSeguimientoPedido servicioSeguimientoPedido(DaoDetallePedido daoDetallePedido,DaoPedido daoPedido){
+        return  new ServicioSeguimientoPedido(daoDetallePedido,daoPedido);
+    }
+
 }

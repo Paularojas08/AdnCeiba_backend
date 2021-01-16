@@ -24,8 +24,8 @@ public class MapeoPedido implements RowMapper<DtoPedido>, MapperResult {
         Double precioTotal=resultSet.getDouble("precioTotal");
         EstadoPedido estado=EstadoPedido.valueOf(resultSet.getString("estado"));
         Long idMunicipio=resultSet.getLong("id_municipio");
-        String cedula=resultSet.getString("cedula");
-        String direccion=resultSet.getString("direccion");
+        String cedula=resultSet.getString("cedula_destinatario");
+        String direccion=resultSet.getString("direccion_destinatario");
         Long idUsuario=resultSet.getLong("id_usuario");
 
         return new DtoPedido(id,identificadorSeguimiento,fechaPedido,fechaEnvio,precioTotal,estado,idMunicipio,cedula,direccion,idUsuario);
