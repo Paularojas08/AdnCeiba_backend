@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface DaoProducto {
     DtoProducto obtener(String codigo);
+    List<DtoProducto> listar();
 }

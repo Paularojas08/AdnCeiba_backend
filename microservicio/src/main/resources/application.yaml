@@ -14,7 +14,7 @@ spring:
    datasource:
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.zaxxer.hikari.HikariDataSource
-      jdbcUrl: jdbc:mysql://localhost:3306/tienda_belleza
+      jdbcUrl: jdbc:mysql://localhost:3306/prueba
       username: paula
       password: 123456
       hikari:

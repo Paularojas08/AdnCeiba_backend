@@ -61,7 +61,7 @@ public class ServicioCrearPedido {
 	private Pedido crearPedidoInicial(SolicitudPedido solicitudPedido) {
 		double precioPedido = calcularPrecioPedido(solicitudPedido);
 		LocalDate fechaPedido=LocalDate.now();
-		LocalDate fechaEnvio= null;
+		LocalDate fechaEnvio;
 		try {
 			fechaEnvio = construirFechaEnvio(fechaPedido);
 		} catch (IOException e) {

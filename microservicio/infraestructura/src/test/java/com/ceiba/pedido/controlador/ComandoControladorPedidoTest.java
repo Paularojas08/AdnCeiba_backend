@@ -1,7 +1,6 @@
 package com.ceiba.pedido.controlador;
 
 import com.ceiba.ApplicationMock;
-import com.ceiba.pedido.ComandoControladorPedido;
 import com.ceiba.pedido.comando.ComandoPedido;
 import com.ceiba.pedido.comando.ComandoSolcitudPedido;
 import com.ceiba.pedido.servicio.ComandoPedidoTestDataBuilder;
@@ -54,6 +53,8 @@ public class ComandoControladorPedidoTest {
                 .content(objectMapper.writeValueAsString(pedido)))
                 .andExpect(status().isOk());
     }
+    /**
+     *
     @Test
     public void eliminar() throws Exception{
 
@@ -62,14 +63,6 @@ public class ComandoControladorPedidoTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
+**/
 
-    @Test
-    public void seguimientoPedidoPorIdentificador() throws Exception {
-
-        mocMvc.perform(get("/pedido/aqwer")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", isA(LinkedHashMap.class)));
-
-    }
 }

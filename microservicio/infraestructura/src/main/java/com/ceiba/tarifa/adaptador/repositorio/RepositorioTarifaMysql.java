@@ -1,4 +1,4 @@
-package com.ceiba.tarifa.repositorio;
+package com.ceiba.tarifa.adaptador.repositorio;
 
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;

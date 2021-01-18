@@ -1,4 +1,4 @@
-package com.ceiba.tarifa.modelo.dto;
+package com.ceiba.municipio.modelo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,9 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DtoMunicipio {
-	private Long id;
-	private String nombre;
-	private String codigoMunicipio;
-
-
+    private Long id;
+    private String nombre;
+    private Long codigoMunicipio;
 }

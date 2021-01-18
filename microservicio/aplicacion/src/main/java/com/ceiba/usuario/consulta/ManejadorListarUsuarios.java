@@ -16,5 +16,7 @@ public class ManejadorListarUsuarios {
         this.daoUsuario = daoUsuario;
     }
 
-    public List<DtoUsuario> ejecutar(){ return this.daoUsuario.listar(); }
+    public List<DtoUsuario> ejecutar(){
+        return this.daoUsuario.listar();
+    }
 }

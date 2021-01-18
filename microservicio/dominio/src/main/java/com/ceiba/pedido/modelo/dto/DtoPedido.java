@@ -20,11 +20,12 @@ public class DtoPedido {
 	private LocalDate fechaPedido;
 	private LocalDate fechaEnvio;
 	private Double precioTotal;
+	private List<DtoDetallePedido> detallePedido;
 	private EstadoPedido estado;
-	private long idMunicipio;
+	private Long idMunicipio;
 	private String cedula;
 	private String direccion;
-	private Long idUsuario;
+	private Long  idUsuario;
 
 
 }

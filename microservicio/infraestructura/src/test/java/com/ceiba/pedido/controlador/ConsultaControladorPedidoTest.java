@@ -1,6 +1,7 @@
-package com.ceiba.producto.controlador;
+package com.ceiba.pedido.controlador;
 
 import com.ceiba.ApplicationMock;
+import com.ceiba.municipio.controlador.ConsultaControladorMunicipio;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,41 +10,27 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.hamcrest.CoreMatchers.isA;
+
 import java.util.LinkedHashMap;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.core.Is.is;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.hamcrest.CoreMatchers.isA;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes= ApplicationMock.class)
-@WebMvcTest(ConsultaControladorProducto.class)
-public class ConsultaControladorProductoTest {
-
+@WebMvcTest(ConsultaControladorPedido.class)
+public class ConsultaControladorPedidoTest {
     @Autowired
     private MockMvc mocMvc;
-
     @Test
-    public void obtenerProductoPorCodigo() throws Exception {
+    public void obtenerPedidoPorIdentificador() throws Exception {
 
-        mocMvc.perform(get("/productos/354")
+        mocMvc.perform(get("/pedido/aqwer")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", isA(LinkedHashMap.class)));
 
     }
-
-    @Test
-    public void listar() throws Exception {
-
-        mocMvc.perform(get("/productos")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(2)))
-                .andExpect(jsonPath("$[0].nombre", is("plancha")));
-    }
-
 }
