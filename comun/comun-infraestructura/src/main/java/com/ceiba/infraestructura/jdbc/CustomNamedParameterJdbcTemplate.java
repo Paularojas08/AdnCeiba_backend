@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.ceiba.infraestructura.excepcion.ExcepcionTecnica;
-import com.ceiba.pedido.servicio.util.EstadoPedido;
+import com.ceiba.util.EstadoPedido;
 
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -67,11 +67,8 @@ public class CustomNamedParameterJdbcTemplate {
 		MapSqlParameterSource paramSource = crearParametroUnico(paramName, object);
 	    return namedParameterJdbcTemplate.queryForObject(sql, paramSource, Double.class);
 	}
-	
-	public Long  obtenerPedido(String paramName, Object object,String sql) {
-		MapSqlParameterSource paramSource = crearParametroUnico(paramName, object);
-	    return namedParameterJdbcTemplate.queryForObject(sql, paramSource, Long.class);
-	}
+
+
 	private MapSqlParameterSource crearParametroUnico(String paramName, Object value) {
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		paramSource.addValue(paramName, value);

@@ -12,7 +12,7 @@ public class HolidayAbstractApi {
     private static final String API_KEY = "5e0e2b64c9964607bac699cc84e42f74";
     private static final String END_POINT = "https://holidays.abstractapi.com/v1/?";
 
-    public static boolean esFestivo(LocalDateTime fecha) throws IOException {
+    public static boolean esFestivo(LocalDate fecha) throws IOException {
         Content content = Request.Get(END_POINT + "api_key=+" + API_KEY + "&country=" + PAIS + "&year="
                 + fecha.getYear() + "&month=" + fecha.getMonthValue() + "&day=" + fecha.getDayOfMonth()).execute()
                 .returnContent();

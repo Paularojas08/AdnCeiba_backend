@@ -63,6 +63,7 @@ public class ValidadorArgumento {
         }
     }
 
+
     public static void validarRegex(String correoElectronico, String regex, String mensaje) {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(correoElectronico);
