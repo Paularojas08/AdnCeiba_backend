@@ -83,6 +83,7 @@ public class ServicioCrearPedido {
 	}
 	
 	private double calcularPrecioPedido(SolicitudPedido solicitudPedido) {
+		List<SolicitudPedidoProducto> sol = solicitudPedido.getSolicitudPedidoProductos();
 		List<String> identificadoresProductos = solicitudPedido.getSolicitudPedidoProductos().stream()
 				.map(SolicitudPedidoProducto::getCodigoProducto).collect(Collectors.toList());
 		Double precioPedido = repositorioProducto.obtenerPrecioTotalProductos(identificadoresProductos);

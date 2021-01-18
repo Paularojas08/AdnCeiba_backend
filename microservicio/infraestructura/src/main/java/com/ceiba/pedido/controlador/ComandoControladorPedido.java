@@ -36,10 +36,9 @@ public class ComandoControladorPedido {
     }
 
 
-    @PutMapping(value = "/{id}")
+    @PutMapping
     @ApiOperation("Actualizar pedido")
-    public void actualizarPedido(@PathVariable Long id, @RequestBody ComandoPedido comandoPedido) {
-        comandoPedido.setId(id);
+    public void actualizarPedido(@RequestBody ComandoPedido comandoPedido) {
         this.manejadorActualizarPedido.ejecutar(comandoPedido);
     }
 

@@ -17,7 +17,7 @@ public class MapeoDetallePedido implements RowMapper<DtoDetallePedido>, MapperRe
         String idProducto = resultSet.getString("id_producto");
         Integer cantidad = resultSet.getInt("cantidadPedida");
 
-        return new DtoDetallePedido(id,idPedido,idProducto,cantidad);
+        return new DtoDetallePedido(id,idPedido,idProducto,cantidad,null);
     }
 
 }

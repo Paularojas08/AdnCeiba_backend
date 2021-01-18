@@ -14,6 +14,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.LinkedHashMap;
 
 import static org.hamcrest.CoreMatchers.isA;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.core.Is.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -32,5 +34,14 @@ public class ConsultaControladorPedidoTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", isA(LinkedHashMap.class)));
 
+    }
+    @Test
+    public void listar() throws Exception {
+
+        mocMvc.perform(get("/pedido")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].identificadorSeguimiento", is("aqwer")));
     }
 }

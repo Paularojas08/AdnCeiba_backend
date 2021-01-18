@@ -9,4 +9,5 @@ import java.util.List;
 public interface DaoPedido {
     Boolean obtenerPedidoPorDestinatario(String cedula);
     DtoPedido obtenerPedidoPorIdSeguimiento(String identificadorSeguimiento);
+    List<DtoPedido> listarPedidos();
 }

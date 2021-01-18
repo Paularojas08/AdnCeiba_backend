@@ -14,6 +14,7 @@ public class SolicitudPedidoProducto {
 	private int cantidad;
 
 	public SolicitudPedidoProducto(){}
+
 	public SolicitudPedidoProducto(Long id, String codigoProducto, int cantidad) {
 		validarObligatorio(codigoProducto, Constantes.VALIDACION_CAMPO_SOLICITUD_PRODUCTOS);
 		validarObligatorio(cantidad,Constantes.VALIDACION_CAMPO_CANTIDAD_PRODUCTO);

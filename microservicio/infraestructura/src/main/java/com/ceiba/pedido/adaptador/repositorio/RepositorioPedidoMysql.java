@@ -21,6 +21,9 @@ public class RepositorioPedidoMysql implements RepositorioPedido {
     @SqlStatement(namespace="pedido", value="eliminar")
     private static String sqlEliminar;
 
+    @SqlStatement(namespace="pedido", value="eliminarDetalle")
+    private static String sqlEliminarDetalle;
+
     @SqlStatement(namespace = "pedido", value = "buscarId")
     private static String sqlBuscarId;
 
@@ -44,6 +47,7 @@ public class RepositorioPedidoMysql implements RepositorioPedido {
     public void eliminar(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminarDetalle, paramSource);
         this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
     }
 

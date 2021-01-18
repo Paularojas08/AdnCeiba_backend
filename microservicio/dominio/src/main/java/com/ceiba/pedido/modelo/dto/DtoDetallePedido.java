@@ -16,5 +16,6 @@ public class DtoDetallePedido {
 	private Long idPedido;
 	private String idProducto;
 	private int cantidadPedida;
+	private String nombre;
 
 }

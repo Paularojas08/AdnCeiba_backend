@@ -2,10 +2,13 @@ package com.ceiba.pedido.adaptador.dao;
 
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
+import com.ceiba.municipio.adaptador.dao.MapeoMunicipio;
 import com.ceiba.pedido.modelo.dto.DtoPedido;
 import com.ceiba.pedido.puerto.dao.DaoPedido;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class DaoPedidoMysql implements DaoPedido {
@@ -18,6 +21,9 @@ public class DaoPedidoMysql implements DaoPedido {
 
     @SqlStatement(namespace = "pedido", value = "buscarPedido")
     private static String sqlBuscarIdentificador;
+
+    @SqlStatement(namespace="pedido", value="listar")
+    private static String sqlListar;
 
     public DaoPedidoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -41,5 +47,10 @@ public class DaoPedidoMysql implements DaoPedido {
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarIdentificador,
                 paramSource, new MapeoPedido());
 
+    }
+
+    @Override
+    public List<DtoPedido> listarPedidos() {
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoPedido());
     }
 }

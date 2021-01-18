@@ -48,13 +48,12 @@ public class ComandoControladorPedidoTest {
 
         ComandoPedido pedido = new ComandoPedidoTestDataBuilder().build();
 
-        mocMvc.perform(put("/pedido/{id}",1L)
+        mocMvc.perform(put("/pedido")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(pedido)))
                 .andExpect(status().isOk());
     }
-    /**
-     *
+
     @Test
     public void eliminar() throws Exception{
 
@@ -63,6 +62,6 @@ public class ComandoControladorPedidoTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
-**/
+
 
 }
