@@ -11,30 +11,13 @@ import com.ceiba.pedido.servicio.ServicioEliminarPedido;
 import com.ceiba.producto.puerto.repositorio.RepositorioProducto;
 import com.ceiba.tarifa.puerto.dao.RepositorioTarifa;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
-import com.ceiba.usuario.servicio.ServicioActualizarUsuario;
-import com.ceiba.usuario.servicio.ServicioCrearUsuario;
-import com.ceiba.usuario.servicio.ServicioEliminarUsuario;
-import com.ceiba.usuario.servicio.ServicioLoguin;
+import com.ceiba.usuario.servicio.ServicioLogin;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class BeanServicio {
 
-    @Bean
-    public ServicioCrearUsuario servicioCrearUsuario(RepositorioUsuario repositorioUsuario) {
-        return new ServicioCrearUsuario(repositorioUsuario);
-    }
-
-    @Bean
-    public ServicioEliminarUsuario servicioEliminarUsuario(RepositorioUsuario repositorioUsuario) {
-        return new ServicioEliminarUsuario(repositorioUsuario);
-    }
-
-    @Bean
-    public ServicioActualizarUsuario servicioActualizarUsuario(RepositorioUsuario repositorioUsuario) {
-        return new ServicioActualizarUsuario(repositorioUsuario);
-    }
 
     @Bean
     public ServicioActualizarPedido servicioActualizarPedido(RepositorioPedido repositorioPedido){
@@ -51,8 +34,8 @@ public class BeanServicio {
     }
 
     @Bean
-    public ServicioLoguin servicioLoguin(RepositorioUsuario repositorioUsuario){
-        return new ServicioLoguin(repositorioUsuario);
+    public ServicioLogin servicioLoguin(RepositorioUsuario repositorioUsuario){
+        return new ServicioLogin(repositorioUsuario);
     }
 
 }

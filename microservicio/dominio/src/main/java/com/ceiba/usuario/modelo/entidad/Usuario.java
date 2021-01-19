@@ -21,9 +21,8 @@ public class Usuario {
     private String correo;
 
     public Usuario(Long id,String cedula,String nombre, String clave,String correo) {
-        validarObligatorio(nombre, Constantes.SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO);
+        validarObligatorio(correo, Constantes.VALIDACION_CAMPO_NOMBRE);
         validarObligatorio(clave, Constantes.SE_DEBE_INGRESAR_LA_CLAVE);
-        validarObligatorio(cedula, Constantes.VALIDACION_CAMPO_CEDULA);
         this.id = id;
         this.nombre = nombre;
         this.clave = clave;
