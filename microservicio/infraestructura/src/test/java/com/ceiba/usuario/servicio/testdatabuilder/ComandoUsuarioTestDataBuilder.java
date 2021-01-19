@@ -8,25 +8,27 @@ import java.util.UUID;
 public class ComandoUsuarioTestDataBuilder {
 
     private Long id;
+    private String cedula;
     private String nombre;
     private String clave;
-    private LocalDateTime fecha;
+    private String correo;
 
     public ComandoUsuarioTestDataBuilder() {
-        nombre = UUID.randomUUID().toString();
+        id=1L;
+        cedula="1234545";
+        nombre="admin";
+        correo ="admin@gmail.com";
         clave = "1234";
-        fecha = LocalDateTime.now();
     }
 
-    public ComandoUsuarioTestDataBuilder conNombre(String nombre) {
-        this.nombre = nombre;
-        return this;
-    }
 
     public ComandoUsuario build() {
         ComandoUsuario comandoUsuario=new ComandoUsuario();
+        comandoUsuario.setId(this.id);
         comandoUsuario.setClave(this.clave);
+        comandoUsuario.setCorreo(this.correo);
         comandoUsuario.setNombre(this.nombre);
+        comandoUsuario.setCedula(this.cedula);
         return comandoUsuario;
     }
 }

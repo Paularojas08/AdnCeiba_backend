@@ -20,9 +20,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-//@RunWith(SpringRunner.class)
-//@ContextConfiguration(classes= ApplicationMock.class)
-//@WebMvcTest(ComandoControladorUsuario.class)
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes= ApplicationMock.class)
+@WebMvcTest(ComandoControladorUsuario.class)
 public class ComandoControladorUsuarioTest {
 
     @Autowired
@@ -31,6 +31,17 @@ public class ComandoControladorUsuarioTest {
     @Autowired
     private MockMvc mocMvc;
 
+    @Test
+    public void loguin() throws Exception{
+        // arrange
+        ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder().build();
+
+        // act - assert
+        mocMvc.perform(post("/usuarios/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(usuario)))
+                .andExpect(status().isOk());
+    }
     /**
      *
     @Test
