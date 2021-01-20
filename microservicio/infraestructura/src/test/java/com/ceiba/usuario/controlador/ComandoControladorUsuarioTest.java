@@ -3,13 +3,11 @@ package com.ceiba.usuario.controlador;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.ceiba.ApplicationMock;
 import com.ceiba.usuario.comando.ComandoUsuario;
-import com.ceiba.usuario.controlador.ComandoControladorUsuario;
-import com.ceiba.usuario.servicio.testdatabuilder.ComandoUsuarioTestDataBuilder;
+import com.ceiba.usuario.servicio.ComandoUsuarioTestDataBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

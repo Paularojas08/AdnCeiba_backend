@@ -24,6 +24,7 @@ public class Usuario {
         validarObligatorio(correo, Constantes.VALIDACION_CAMPO_NOMBRE);
         validarObligatorio(clave, Constantes.SE_DEBE_INGRESAR_LA_CLAVE);
         this.id = id;
+        this.cedula=cedula;
         this.nombre = nombre;
         this.clave = clave;
         this.correo=correo;

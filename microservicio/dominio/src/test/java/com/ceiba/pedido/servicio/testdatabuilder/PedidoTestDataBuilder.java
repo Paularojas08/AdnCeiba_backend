@@ -47,7 +47,9 @@ public class PedidoTestDataBuilder {
      this.precioTotal=PRECIO;
      this.identificadorSeguimiento=IDENTIFICADOR;
 	}
-
+	public Pedido buildFallo() {
+		return new Pedido(this.id,this.identificadorSeguimiento,this.fechaPedido,null,this.precioTotal,null,this.estado,this.idMunicipio,null,this.direccion,this.idUsuario);
+	}
 	public Pedido build() {
 		return new Pedido(this.id,this.identificadorSeguimiento,this.fechaPedido,null,this.precioTotal,null,this.estado,this.idMunicipio,this.cedula,this.direccion,this.idUsuario);
 	}
