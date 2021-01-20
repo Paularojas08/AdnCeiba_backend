@@ -29,7 +29,7 @@ public class ConsultaControladorProductoTest {
     @Test
     public void obtenerProductoPorCodigo() throws Exception {
 
-        mocMvc.perform(get("/productos/354")
+        mocMvc.perform(get("/producto/354")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", isA(LinkedHashMap.class)));
@@ -39,7 +39,7 @@ public class ConsultaControladorProductoTest {
     @Test
     public void listar() throws Exception {
 
-        mocMvc.perform(get("/productos")
+        mocMvc.perform(get("/producto")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))

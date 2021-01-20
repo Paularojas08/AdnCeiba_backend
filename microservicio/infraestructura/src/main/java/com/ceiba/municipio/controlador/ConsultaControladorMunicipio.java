@@ -13,8 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/municipio")
-@CrossOrigin
 @Api(tags={"Controlador consulta municipios"})
+@CrossOrigin
 public class ConsultaControladorMunicipio {
     private final ManejadorListarMunicipios manejadorListarMunicipios;
 

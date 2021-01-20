@@ -41,7 +41,6 @@ public class ConsultaControladorPedidoTest {
         mocMvc.perform(get("/pedido")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].identificadorSeguimiento", is("aqwer")));
+                .andExpect(jsonPath("$", hasSize(1)));
     }
 }
